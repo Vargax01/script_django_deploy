@@ -35,4 +35,5 @@ then
 	sed -i 's/$ACCESS_LOG/'$ACCESS_LOG'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
 	sudo cp /home/ubuntu/script_django_deploy/template-site.conf.tmp /etc/apache2/sites-enabled/$site_apache
 fi
-
+sudo a2ensite $SITE_APACHE
+sudo systemctl restart apache2

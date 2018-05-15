@@ -1,8 +1,8 @@
 #!/bin/bash
 GIT_URL=$1
-cont=`echo $git_url | grep -o / | wc -l`
+cont=`echo $GIT_URL | grep -o / | wc -l`
 cont=$(($cont+1))
-carpeta_proyecto=`echo $git_url | cut -d"/" -f$cont`
+carpeta_proyecto=`echo $GIT_URL | cut -d"/" -f$cont`
 if [ -d /var/www/$carpeta_proyecto ];
 then
 	sudo rm -r /var/www/$carpeta_proyecto

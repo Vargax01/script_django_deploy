@@ -21,11 +21,11 @@ DNS=`/home/ubuntu/script_django_deploy/json-bash.sh DNS $carpeta_proyecto | cut 
 SITE_APACHE=`/home/ubuntu/script_django_deploy/json-bash.sh SITE_APACHE $carpeta_proyecto | cut -d" " -f2`
 NOMBRE_PROYECTO=`/home/ubuntu/script_django_deploy/json-bash.sh NOMBRE_PROYECTO $carpeta_proyecto | cut -d" " -f2`
 P_NAME=`echo $NOMBRE_PROYECTO | cut -d"_" -f1`
-P_NAME=`echo $NOMBRE_PROYECTO"_project"`
+P_NAME=`echo $P_NAME"_project"`
 ERROR_LOG=`echo $NOMBRE_PROYECTO"_error.log"`
 ACCESS_LOG=`echo $NOMBRE_PROYECTO"_access.log"`
 sudo cp -R /var/www/$carpeta_proyecto/lib/$PYTHON_V/site-packages/django/contrib/admin/static/admin/ /var/www/$carpeta_proyecto/$P_NAME/static/
-if [ ! -f /etc/apache2/sites-enabled/$site_apache ];
+if [ ! -f /etc/apache2/sites-enabled/$SITE_APACHE ];
 then
 	cp /home/ubuntu/script_django_deploy/template-site.conf /home/ubuntu/script_django_deploy/template-site.conf.tmp
 	sed -i 's/$PROJECT_NAME/'$P_NAME'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
@@ -33,7 +33,7 @@ then
 	sed -i 's/$SERVER_NAME/'$DNS'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
 	sed -i 's/$ERROR_LOG/'$ERROR_LOG'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
 	sed -i 's/$ACCESS_LOG/'$ACCESS_LOG'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
-	sudo cp /home/ubuntu/script_django_deploy/template-site.conf.tmp /etc/apache2/sites-enabled/$site_apache
+	sudo cp /home/ubuntu/script_django_deploy/template-site.conf.tmp /etc/apache2/sites-enabled/$SITE_APACHE
 fi
 sudo a2ensite $SITE_APACHE
 sudo systemctl restart apache2

@@ -17,9 +17,9 @@ PYTHON_V1=`echo ${PYTHON_V//[[:blank:]]/} | tr '[:upper:]' '[:lower:]' | cut -d"
 PYTHON_V2=`echo ${PYTHON_V//[[:blank:]]/} | tr '[:upper:]' '[:lower:]' | cut -d"." -f2`
 PYTHON_V=`echo $PYTHON_V1"."$PYTHON_V2`
 deactivate
-DNS=`/home/ubuntu/script_django_deploy/json-bash.sh DNS /var/www/$carpeta_proyecto/params.json | cut -d" " -f2`
-SITE_APACHE=`/home/ubuntu/script_django_deploy/json-bash.sh SITE_APACHE /var/www/$carpeta_proyecto/params.json | cut -d" " -f2`
-NOMBRE_PROYECTO=`/home/ubuntu/script_django_deploy/json-bash.sh NOMBRE_PROYECTO /var/www/$carpeta_proyecto/params.json | cut -d" " -f2`
+DNS=`/home/ubuntu/script_django_deploy/json-bash.sh DNS $carpeta_proyecto | cut -d" " -f2`
+SITE_APACHE=`/home/ubuntu/script_django_deploy/json-bash.sh SITE_APACHE $carpeta_proyecto | cut -d" " -f2`
+NOMBRE_PROYECTO=`/home/ubuntu/script_django_deploy/json-bash.sh NOMBRE_PROYECTO $carpeta_proyecto | cut -d" " -f2`
 P_NAME=`echo $NOMBRE_PROYECTO | cut -d"_" -f1`
 P_NAME=`echo $NOMBRE_PROYECTO"_project"`
 ERROR_LOG=`echo $NOMBRE_PROYECTO"_error.log"`

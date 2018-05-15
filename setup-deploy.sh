@@ -7,7 +7,7 @@ if [ -d /var/www/$carpeta_proyecto ];
 then
 	sudo rm -r /var/www/$carpeta_proyecto
 fi
-git clone $git_url /var/www/$carpeta_proyecto
+git clone $GIT_URL /var/www/$carpeta_proyecto
 sudo chmod -R 777 /var/www/$carpeta_proyecto
 virtualenv /var/www/$carpeta_proyecto/
 source /var/www/$carpeta_proyecto/bin/activate

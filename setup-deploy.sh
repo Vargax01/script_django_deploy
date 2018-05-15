@@ -9,10 +9,9 @@ then
 fi
 git clone $GIT_URL /var/www/$carpeta_proyecto
 sudo chmod -R 777 /var/www/$carpeta_proyecto
-cd /var/www/$carpeta_proyecto
-virtualenv .
-source bin/activate
-pip3 install -r requirements.txt
+.local/bin/virtualenv /var/www/$carpeta_proyecto
+source /var/www/$carpeta_proyecto/bin/activate
+pip3 install -r /var/www/$carpeta_proyecto/requirements.txt
 PYTHON_V=`python -V`
 PYTHON_V1=`echo ${PYTHON_V//[[:blank:]]/} | tr '[:upper:]' '[:lower:]' | cut -d"." -f1`
 PYTHON_V2=`echo ${PYTHON_V//[[:blank:]]/} | tr '[:upper:]' '[:lower:]' | cut -d"." -f2`

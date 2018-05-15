@@ -33,7 +33,7 @@ then
 	sed -i 's/$SERVER_NAME/'$DNS'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
 	sed -i 's/$ERROR_LOG/'$ERROR_LOG'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
 	sed -i 's/$ACCESS_LOG/'$ACCESS_LOG'/g' /home/ubuntu/script_django_deploy/template-site.conf.tmp
-	sudo cp /home/ubuntu/script_django_deploy/template-site.conf.tmp /etc/apache2/sites-enabled/$SITE_APACHE
+	sudo cp /home/ubuntu/script_django_deploy/template-site.conf.tmp /etc/apache2/sites-available/$SITE_APACHE
 fi
 sudo a2ensite $SITE_APACHE
 sudo systemctl restart apache2

@@ -8,6 +8,9 @@ then
 	sudo rm -r /var/www/$carpeta_proyecto
 fi
 git clone $GIT_URL /var/www/$carpeta_proyecto
+cd /var/www/$carpeta_proyecto
+git checkout despliegue
+ cd ~/
 sudo chmod -R 777 /var/www/$carpeta_proyecto
 .local/bin/virtualenv /var/www/$carpeta_proyecto
 source /var/www/$carpeta_proyecto/bin/activate
@@ -37,3 +40,4 @@ then
 fi
 sudo a2ensite $SITE_APACHE
 sudo systemctl restart apache2
+python3 /home/ubuntu/script_django_deploy/mensaje.py

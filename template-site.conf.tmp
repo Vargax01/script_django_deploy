@@ -1,0 +1,45 @@
+<IfModule mod_ssl.c>
+	<VirtualHost _default_:443>
+		ServerName 
+		ServerAdmin "zbotpath@gmail.com"
+
+		Alias /static/  /var/www/ariados/_project/static/
+		Alias /media/  /var/www/ariados/_project/media/
+
+		WSGIScriptAlias /   /var/www/ariados/_project/_project/wsgi.py
+		WSGIDaemonProcess   _project python-home=/var/www/ariados/_project/ python-path=/var/www/ariados/_project/
+		WSGIProcessGroup    _project
+
+		<Directory /var/www/ariados/_project/static>
+		        Options -Indexes
+		        Order deny,allow
+		        Allow from all
+		</Directory>
+		<Directory /var/www/ariados/_project/media>
+			Options -Indexes
+		        Order deny,allow
+		        Allow from all
+		</Directory>
+
+		LogLevel warn
+		ErrorLog    /var/log/apache2/_error.log
+		CustomLog   /var/log/apache2/_access.log
+
+		SSLEngine on
+
+
+		Include     /etc/letsencrypt/options-ssl-apache.conf
+
+		<FilesMatch "\.(cgi|shtml|phtml|php)$">
+				SSLOptions +StdEnvVars
+		</FilesMatch>
+		<Directory /usr/lib/cgi-bin>
+				SSLOptions +StdEnvVars
+		</Directory>
+Include /etc/letsencrypt/options-ssl-apache.conf
+SSLCertificateFile /etc/letsencrypt/live//fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live//privkey.pem
+</VirtualHost>
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet

@@ -15,3 +15,4 @@ sudo apt-get update
 sudo apt-get install python-certbot-apache
 sudo apt-get install libmysqlclient-dev
 sudo apt-get -y install python3-dev default-libmysqlclient-dev build-essential pkg-config
+sudo apt install certbot python3-certbot-apache
